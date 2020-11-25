@@ -1,0 +1,10 @@
+Human Interface Guidelines and App Store Review Guidelines
+
+Human Interface Guidelines
+The human interface guidelines details the regulations that should be followed while developing iOS applications.The guidelines are the reason why the best iOS apps usually have a high level of look, feel and quality. It is divided into sections, each one explaining the rules and best practices required for different modules of app development, from larger scale infrastructure like App Architecture, System capabilities and User Interaction, to smaller scale concepts like icons, badges and different views within the app. The part I found most interesting is the sub-section on Requesting Permission, under App Architecture. The strict policing of the request for personal data, and the conditions that need to be met in order for your app to do so. Data security will always be an important issue, so the guidelines attempts to ease the user by ensuring that apps  clearly outline exactly why the data is required and what it would be used for.
+
+App Store Review Guidelines
+The app store review guidelines highlights the best practices to follow in order to get an iOS reviewed and approved, so that the app can then be placed on the iOS App Store. The App Store review process protects the integrity of the app store itself by making sure that all apps meets the required standards. The guidelines break this down into 5 separate sections; Safety, Performance, Business, Design and Legal. Each section polices how the app should function from the different points of view. The Safety section covers the idea that the app should only contain content that is not harmful to the user ie. of  age restrictions, security threats to the device, data security and more.
+
+The App Store is the centralized location for all apps on the iOS platform
+Both of these guidelines work hand-in-hand to maintain the security, integrity and functionality of app that appear on the store
