@@ -94,8 +94,7 @@ struct Ability: Decodable{
 struct Moves: Decodable{
     let name: String
     let url: String
-    let levelLearned: Int?
-//    let moveLearnedMethodName: String
+///    let moveLearnedMethodName: String
 //    let moveLearnedMethodUrl: String
     
     enum CodingKeys: String, CodingKey{
@@ -108,20 +107,20 @@ struct Moves: Decodable{
         case url
     }
     
-    enum VersionGroupDetailsKeys: String, CodingKey{
-        case levelLearned = "level_learned_at"
-    }
+//    enum VersionGroupDetailsKeys: String, CodingKey{
+//        case levelLearned = "level_learned_at"
+//    }
     
     init(from decoder: Decoder) throws {
         let baseLevelContainer = try decoder.container(keyedBy: CodingKeys.self)
         
         let moveContainer = try baseLevelContainer.nestedContainer(keyedBy: MoveCodingKeys.self, forKey: .move)
         
-        let versionGroupDetailsContainer = try baseLevelContainer.nestedContainer(keyedBy: VersionGroupDetailsKeys.self, forKey: .versionGroupDetails)
+//        let versionGroupDetailsContainer = try baseLevelContainer.nestedContainer(keyedBy: VersionGroupDetailsKeys.self, forKey: .versionGroupDetails)
         
         self.name = try moveContainer.decode(String.self, forKey: .name)
         self.url = try moveContainer.decode(String.self, forKey: .url)
-        self.levelLearned = try? versionGroupDetailsContainer.decode(Int.self, forKey: .levelLearned)
+//        self.levelLearned = try? versionGroupDetailsContainer.decode(Int.self, forKey: .levelLearned)
     }
     
 }
