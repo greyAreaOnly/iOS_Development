@@ -92,14 +92,13 @@ struct Ability: Decodable{
 //}
 
 struct Moves: Decodable{
-    let name: String
-    let url: String
-///    let moveLearnedMethodName: String
-//    let moveLearnedMethodUrl: String
+    let name: String?
+    let url: String?
+    let groupDetails: [GroupDetails]?
     
     enum CodingKeys: String, CodingKey{
         case move
-        case versionGroupDetails
+        case groupDetails = "version_group_details"
     }
     
     enum MoveCodingKeys: String, CodingKey{
@@ -107,22 +106,60 @@ struct Moves: Decodable{
         case url
     }
     
-//    enum VersionGroupDetailsKeys: String, CodingKey{
-//        case levelLearned = "level_learned_at"
-//    }
-    
     init(from decoder: Decoder) throws {
         let baseLevelContainer = try decoder.container(keyedBy: CodingKeys.self)
         
         let moveContainer = try baseLevelContainer.nestedContainer(keyedBy: MoveCodingKeys.self, forKey: .move)
         
-//        let versionGroupDetailsContainer = try baseLevelContainer.nestedContainer(keyedBy: VersionGroupDetailsKeys.self, forKey: .versionGroupDetails)
-        
         self.name = try moveContainer.decode(String.self, forKey: .name)
         self.url = try moveContainer.decode(String.self, forKey: .url)
-//        self.levelLearned = try? versionGroupDetailsContainer.decode(Int.self, forKey: .levelLearned)
+        self.groupDetails = try baseLevelContainer.decode([GroupDetails].self, forKey: .groupDetails)
+    }
+}
+
+struct GroupDetails: Decodable{
+    let levelLearnedAt: Int?
+    let methodName: String?
+    let methodUrl: String?
+    let versionName: String?
+    let versionUrl: String?
+    
+    enum CodingKeys: String, CodingKey{
+        case levelLearnedAt = "level_learned_at"
+        case moveLearnedMethod = "move_learn_method"
+        case versionGroup = "version_group"
     }
     
+    enum LearnMethodKeys: String, CodingKey{
+        case name = "name"
+        case url = "url"
+    }
+    
+    enum VersionCodingKeys: String, CodingKey{
+        case name
+        case url
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        let methodContainer = try container.nestedContainer(keyedBy: LearnMethodKeys.self, forKey: .moveLearnedMethod)
+        
+        let versionContainer = try container.nestedContainer(keyedBy: VersionCodingKeys.self, forKey: .versionGroup)
+        
+    
+        
+        self.levelLearnedAt = try container.decode(Int.self, forKey: .levelLearnedAt)
+        
+        self.methodName = try methodContainer.decode(String.self, forKey: .name)
+        
+        self.methodUrl = try methodContainer.decode(String.self, forKey: .url)
+        
+        self.versionName = try versionContainer.decode(String.self, forKey: .name)
+        
+        self.versionUrl = try versionContainer.decode(String.self, forKey: .url)
+        
+    }
 }
 
 
