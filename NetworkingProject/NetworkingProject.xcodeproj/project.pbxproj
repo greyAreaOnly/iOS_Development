@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F1479D625878248001DCED2 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1479D525878248001DCED2 /* DetailsViewController.swift */; };
 		7F6263B6257FF9C9005A533F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6263B5257FF9C9005A533F /* AppDelegate.swift */; };
 		7F6263B8257FF9C9005A533F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6263B7257FF9C9005A533F /* SceneDelegate.swift */; };
 		7F6263BA257FF9C9005A533F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6263B9257FF9C9005A533F /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7F1479D525878248001DCED2 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		7F6263B2257FF9C9005A533F /* NetworkingProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkingProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F6263B5257FF9C9005A533F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F6263B7257FF9C9005A533F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				7F6263CE25813990005A533F /* NetworkingManager.swift */,
 				7F6263D125818DEC005A533F /* PokemonTableViewCell.swift */,
 				7F6263D225818DED005A533F /* PokemonTableViewCell.xib */,
+				7F1479D525878248001DCED2 /* DetailsViewController.swift */,
 			);
 			path = NetworkingProject;
 			sourceTree = "<group>";
@@ -154,6 +157,7 @@
 				7F6263CB2581054F005A533F /* Pokemon.swift in Sources */,
 				7F6263B6257FF9C9005A533F /* AppDelegate.swift in Sources */,
 				7F6263D325818DED005A533F /* PokemonTableViewCell.swift in Sources */,
+				7F1479D625878248001DCED2 /* DetailsViewController.swift in Sources */,
 				7F6263CF25813990005A533F /* NetworkingManager.swift in Sources */,
 				7F6263B8257FF9C9005A533F /* SceneDelegate.swift in Sources */,
 			);

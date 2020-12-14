@@ -23,17 +23,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.getSingularPokemon()
-        self.getSixPokemon()
+        self.getOneFiftyPokemon()
 
     }
     
-    private func getSixPokemon(){
+    private func getOneFiftyPokemon(){
         
         self.pokemonTableView.register(UINib(nibName: "PokemonTableViewCell", bundle: nil), forCellReuseIdentifier: "PokemonTableViewCell")
         self.pokemonTableView.dataSource = self
         let group = DispatchGroup()
         
-        for _ in 1...6{
+        for _ in 1...150{
             group.enter()
             NetworkingManager.shared.getDecodedObject(from: self.createRandomPokemonURL()) { (pokemon: Pokemon?, error) in
                 guard let pokemon = pokemon else{return}
@@ -83,6 +83,8 @@ class ViewController: UIViewController {
         alert.addAction(okAction)
         return alert
     }
+        
+    
 }
 
 extension ViewController: UITableViewDataSource{
@@ -95,6 +97,13 @@ extension ViewController: UITableViewDataSource{
         return cell
     }
 
+}
+
+extension ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        performSegue(withIdentifier: "ShowDetailsView", sender: self)
+    }
 }
 
 
