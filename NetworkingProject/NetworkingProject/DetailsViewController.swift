@@ -8,12 +8,28 @@
 import UIKit
 
 class DetailsViewController: UIViewController {
-
+    
+    var pokemon :Pokemon?
+    
+    @IBOutlet weak var pokemonDetailsImageView: UIImageView!
+    
+    @IBOutlet weak var pokemonDetailsNameLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        pokemonDetailsNameLabel.text = pokemon?.name.capitalized
+        NetworkingManager.shared.getImageData(from: pokemon!.frontImageURL) { (data, error) in
+                   guard let data = data else {return}
+                   DispatchQueue.main.async {
+                       self.pokemonDetailsImageView.image = UIImage(data: data)
+                   }
+                   
+               }
         // Do any additional setup after loading the view.
     }
+    
+    
     
 
     /*

@@ -18,12 +18,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var pokemonTableView: UITableView!
     
     var pokemonArray: [Pokemon] = []
-    
+    var DownloadedPokemonArray:[Results]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.getSingularPokemon()
-        self.getOneFiftyPokemon()
+//        self.getOneFiftyPokemon()
+        self.getListOfOneFiftyOnePokemon()
+        self.pokemonTableView.register(UINib(nibName: "PokemonTableViewCell", bundle: nil), forCellReuseIdentifier: "PokemonTableViewCell")
+        self.pokemonTableView.dataSource = self
+        self.pokemonTableView.delegate = self
 
     }
     
@@ -33,9 +37,27 @@ class ViewController: UIViewController {
         self.pokemonTableView.dataSource = self
         let group = DispatchGroup()
         
-        for _ in 1...150{
+        for i in 1...150{
             group.enter()
-            NetworkingManager.shared.getDecodedObject(from: self.createRandomPokemonURL()) { (pokemon: Pokemon?, error) in
+            NetworkingManager.shared.getDecodedObject(from: self.createPokemonURL(number: i)) { (pokemon: Pokemon?, error) in
+                guard let pokemon = pokemon else{return}
+                self.pokemonArray.append(pokemon)
+                group.leave()
+            }
+        }
+        group.notify(queue: .main){
+        self.pokemonTableView.reloadData()
+        }
+    }
+    private func getListOfOneFiftyOnePokemon(){
+        
+        self.pokemonTableView.register(UINib(nibName: "PokemonTableViewCell", bundle: nil), forCellReuseIdentifier: "PokemonTableViewCell")
+        self.pokemonTableView.dataSource = self
+        let group = DispatchGroup()
+        
+        for i in 1...151{
+            group.enter()
+            NetworkingManager.shared.getDecodedObject(from: self.createPokemonURL(number: i)) { (pokemon: Pokemon?, error) in
                 guard let pokemon = pokemon else{return}
                 self.pokemonArray.append(pokemon)
                 group.leave()
@@ -46,35 +68,44 @@ class ViewController: UIViewController {
         }
     }
     
-    private func getSingularPokemon(){
-        NetworkingManager.shared.getDecodedObject(from: self.createRandomPokemonURL()) { (pokemon: Pokemon?, error) in
-            guard let pokemon = pokemon else{
-                if let error = error{
-                    let alert = self.generateAlert(from: error)
-                    DispatchQueue.main.async{
-                        self.present(alert, animated: true, completion: nil)
-                    }
-                }
-                return
-                
-            }
-            DispatchQueue.main.async {
-                self.pokemonNameLabel?.text = pokemon.name
-            }
-            NetworkingManager.shared.getImageData(from: pokemon.frontImageURL) { (data, error) in
-                guard let data = data else{return}
-                DispatchQueue.main.async{
-                    self.pokemonImageView?.image = UIImage(data: data)
-                }
-            }
-        }
-        
-    }
+//    private func getSingularPokemon(){
+//        NetworkingManager.shared.getDecodedObject(from: self.createRandomPokemonURL()) { (pokemon: Pokemon?, error) in
+//            guard let pokemon = pokemon else{
+//                if let error = error{
+//                    let alert = self.generateAlert(from: error)
+//                    DispatchQueue.main.async{
+//                        self.present(alert, animated: true, completion: nil)
+//                    }
+//                }
+//                return
+//
+//            }
+//            DispatchQueue.main.async {
+//                self.pokemonNameLabel?.text = pokemon.name
+//            }
+//            NetworkingManager.shared.getImageData(from: pokemon.frontImageURL) { (data, error) in
+//                guard let data = data else{return}
+//                DispatchQueue.main.async{
+//                    self.pokemonImageView?.image = UIImage(data: data)
+//                }
+//            }
+//        }
+//
+//    }
 
     
-    private func createRandomPokemonURL() -> String{
-        let randomNumber = Int.random(in: 1...151)
-        return "https://pokeapi.co/api/v2/pokemon/\(randomNumber)"
+//    private func createRandomPokemonURL() -> String{
+//        let randomNumber = Int.random(in: 1...151)
+//        return "https://pokeapi.co/api/v2/pokemon/\(randomNumber)"
+//    }
+    
+    private func createPokemonURL(number:Int) -> String{
+        return"https://pokeapi.co/api/v2/pokemon/\(number)"
+        // https://pokeapi.co/api/v2/pokemon?offset=0&limit=30
+    }
+    
+    private func createPokemonPaginatedURL() -> String{
+        return ("https://pokeapi.co/api/v2/pokemon?offset=0&limit=30")
     }
     
     private func generateAlert(from error: Error) -> UIAlertController{
@@ -84,7 +115,11 @@ class ViewController: UIViewController {
         return alert
     }
         
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? DetailsViewController {
+            destination.pokemon = pokemonArray[pokemonTableView.indexPathForSelectedRow!.row]
+        }
+    }
 }
 
 extension ViewController: UITableViewDataSource{
@@ -94,6 +129,7 @@ extension ViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PokemonTableViewCell", for: indexPath) as! PokemonTableViewCell
         cell.configure(with: self.pokemonArray[indexPath.row])
+        
         return cell
     }
 

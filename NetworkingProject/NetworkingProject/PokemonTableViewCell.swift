@@ -14,11 +14,15 @@ class PokemonTableViewCell: UITableViewCell {
     
     func configure(with pokemon: Pokemon){
         self.pokemonNameLabel.text = pokemon.name.capitalized
-//        self.pokemonTypeLabel.text = "ZZZZZR"//pokemon.typeName
         NetworkingManager.shared.getImageData(from: pokemon.frontImageURL) { (data, error) in
             guard let data = data else {return}
             DispatchQueue.main.async {
               self.pokemonImageView.image = UIImage(data: data)
             }        }
     }
+    func configureType(with pokemonType: Types){
+        self.pokemonTypeLabel.text = pokemonType.typeName
+    }
+   
+    
 }

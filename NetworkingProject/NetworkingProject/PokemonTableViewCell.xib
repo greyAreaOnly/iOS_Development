@@ -26,7 +26,7 @@
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tMV-aD-jqs">
                         <rect key="frame" x="80" y="10" width="210" height="24"/>
-                        <color key="backgroundColor" red="0.89957091968911918" green="0.88348439900454734" blue="0.068147793423034314" alpha="0.95755391725352113" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.73063929859999999" green="0.96356794130000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
