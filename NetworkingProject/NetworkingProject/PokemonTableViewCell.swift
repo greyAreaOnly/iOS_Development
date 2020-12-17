@@ -20,9 +20,9 @@ class PokemonTableViewCell: UITableViewCell {
               self.pokemonImageView.image = UIImage(data: data)
             }        }
     }
-    func configureType(with pokemonType: Types){
-        self.pokemonTypeLabel.text = pokemonType.typeName
-    }
-   
+    override func setSelected(_ selected: Bool, animated: Bool) {
+            super.setSelected(selected, animated: animated)
+            // Configure the view for the selected state
+        }
     
 }

@@ -14,11 +14,14 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var pokemonDetailsImageView: UIImageView!
     
     @IBOutlet weak var pokemonDetailsNameLabel: UILabel!
-    
+
+    @IBOutlet weak var pokemonDetailsViewHeigthLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         pokemonDetailsNameLabel.text = pokemon?.name.capitalized
+      
+        
         NetworkingManager.shared.getImageData(from: pokemon!.frontImageURL) { (data, error) in
                    guard let data = data else {return}
                    DispatchQueue.main.async {

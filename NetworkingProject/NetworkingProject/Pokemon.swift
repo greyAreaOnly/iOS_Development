@@ -11,12 +11,19 @@ import Foundation
 struct Pokemon: Decodable{
     let name: String
     let frontImageURL: URL
+    let baseExperience: Int
+    let weight: Int
+    let height: Int
     let types:[Types]
 
     
     
     enum CodingKeys: String, CodingKey{
         case name
+        case baseExperience = "base_experience"
+        case weight = "weight"
+        case height = "height"
+
         case sprites
         case types
     }
@@ -35,7 +42,9 @@ struct Pokemon: Decodable{
         self.name = try container.decode(String.self, forKey: .name)
         self.frontImageURL = try spritesContainer.decode(URL.self, forKey: .front)
         self.types = try container.decode([Types].self, forKey: .types)
-
+        self.baseExperience = try container.decode(Int.self, forKey: .baseExperience)
+        self.weight = try container.decode(Int.self, forKey: .weight)
+        self.height = try container.decode(Int.self, forKey: .height)
     }
 }
 

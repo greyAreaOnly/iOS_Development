@@ -8,18 +8,32 @@
 import Foundation
 
 import UIKit
-struct PagedPokemon: Codable {
-    let info: Info
-    let results: [Results]
-
-}
-struct Info: Codable {
-    let count: Int
-    let pages: Int
+struct PagedPokemon: Decodable {
     let next: String
-    let prev: String
+    let results: [Results]
+    
+    enum CodingKeys: String, CodingKey{
+        case next
+        case results
+    }
+
 }
 
-struct Results: Codable {
+
+struct Results: Decodable {
     let name: String
+    let url: String
+    
+    enum ResultCodingKeys: String, CodingKey{
+        case name
+        case url
+    }
+    
+    init(from decoder: Decoder) throws {
+        let baseContainer = try decoder.container(keyedBy: ResultCodingKeys.self)
+        self.name = try baseContainer.decode(String.self, forKey: .name)
+        self.url = try baseContainer.decode(String.self, forKey: .url)
+        
+    }
+
 }
