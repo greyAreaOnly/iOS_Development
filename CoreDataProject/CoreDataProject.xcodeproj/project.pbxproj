@@ -10,7 +10,10 @@
 		7F69B3EF2599A28000085690 /* ShipDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F69B3EE2599A28000085690 /* ShipDetailViewController.swift */; };
 		7F69B3F4259B4DEB00085690 /* SpaceShips+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F69B3F2259B4DEB00085690 /* SpaceShips+CoreDataClass.swift */; };
 		7F69B3F5259B4DEB00085690 /* SpaceShips+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F69B3F3259B4DEB00085690 /* SpaceShips+CoreDataProperties.swift */; };
-		7F69B3F9259B4F0700085690 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F69B3F8259B4F0700085690 /* CoreDataStack.swift */; };
+		7F69B405259C1F0400085690 /* ShipEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F69B404259C1F0400085690 /* ShipEntity.swift */; };
+		7F69B408259C28D200085690 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F69B407259C28D200085690 /* CoreDataStack.swift */; };
+		7F69B40B259C2E8100085690 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F69B40A259C2E8100085690 /* DataProvider.swift */; };
+		7F69B40E259C2F2300085690 /* ApiRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F69B40D259C2F2300085690 /* ApiRepository.swift */; };
 		7F93FAF02598CBBF003ABA8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F93FAEF2598CBBF003ABA8E /* AppDelegate.swift */; };
 		7F93FAF22598CBBF003ABA8E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F93FAF12598CBBF003ABA8E /* SceneDelegate.swift */; };
 		7F93FAF42598CBBF003ABA8E /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F93FAF32598CBBF003ABA8E /* FirstViewController.swift */; };
@@ -27,7 +30,10 @@
 		7F69B3EE2599A28000085690 /* ShipDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipDetailViewController.swift; sourceTree = "<group>"; };
 		7F69B3F2259B4DEB00085690 /* SpaceShips+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpaceShips+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7F69B3F3259B4DEB00085690 /* SpaceShips+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpaceShips+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		7F69B3F8259B4F0700085690 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		7F69B404259C1F0400085690 /* ShipEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipEntity.swift; sourceTree = "<group>"; };
+		7F69B407259C28D200085690 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		7F69B40A259C2E8100085690 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		7F69B40D259C2F2300085690 /* ApiRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRepository.swift; sourceTree = "<group>"; };
 		7F93FAEC2598CBBF003ABA8E /* CoreDataProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F93FAEF2598CBBF003ABA8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F93FAF12598CBBF003ABA8E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,7 +89,10 @@
 				7F93FB262599813C003ABA8E /* ShipsTableViewCell.swift */,
 				7F93FB272599813C003ABA8E /* ShipsTableViewCell.xib */,
 				7F93FAF82598CBBF003ABA8E /* CoreDataProject.xcdatamodeld */,
-				7F69B3F8259B4F0700085690 /* CoreDataStack.swift */,
+				7F69B404259C1F0400085690 /* ShipEntity.swift */,
+				7F69B407259C28D200085690 /* CoreDataStack.swift */,
+				7F69B40A259C2E8100085690 /* DataProvider.swift */,
+				7F69B40D259C2F2300085690 /* ApiRepository.swift */,
 			);
 			path = CoreDataProject;
 			sourceTree = "<group>";
@@ -194,12 +203,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F69B405259C1F0400085690 /* ShipEntity.swift in Sources */,
 				7F69B3F4259B4DEB00085690 /* SpaceShips+CoreDataClass.swift in Sources */,
 				7F93FAF42598CBBF003ABA8E /* FirstViewController.swift in Sources */,
 				7F93FAF02598CBBF003ABA8E /* AppDelegate.swift in Sources */,
 				7F93FB2025997C41003ABA8E /* CodableShips.swift in Sources */,
 				7F69B3EF2599A28000085690 /* ShipDetailViewController.swift in Sources */,
-				7F69B3F9259B4F0700085690 /* CoreDataStack.swift in Sources */,
+				7F69B40B259C2E8100085690 /* DataProvider.swift in Sources */,
+				7F69B40E259C2F2300085690 /* ApiRepository.swift in Sources */,
+				7F69B408259C28D200085690 /* CoreDataStack.swift in Sources */,
 				7F69B3F5259B4DEB00085690 /* SpaceShips+CoreDataProperties.swift in Sources */,
 				7F93FB282599813C003ABA8E /* ShipsTableViewCell.swift in Sources */,
 				7F93FAFA2598CBBF003ABA8E /* CoreDataProject.xcdatamodeld in Sources */,
